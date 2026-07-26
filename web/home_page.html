@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shamir Secret Sharing - Home</title>
+    <style>
+        :root{
+          --bg: linear-gradient(135deg,#071229 0%, #0b1220 100%);
+          --card: rgba(255,255,255,0.03);
+          --border: rgba(255,255,255,0.06);
+          --accent: #38bdf8;
+          --accent-2: #60a5fa;
+          --muted: #9fb0c8;
+          --success: #22c55e;
+          --danger: #ef4444;
+          --glass-radius: 14px;
+          --shadow: 0 10px 30px rgba(2,6,23,0.6);
+          --font: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+          --focus: 3px solid rgba(56,189,248,0.18);
+          --transition: 200ms cubic-bezier(.2,.8,.2,1);
+        }
+
+        *{box-sizing:border-box;font-family:var(--font);-webkit-font-smoothing:antialiased;}
+        html,body{height:100%;margin:0;background:var(--bg);color:#e6eef8;}
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .header {
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 2.5rem;
+        }
+        
+        .subtitle {
+            color: var(--muted);
+            font-size: 1.2rem;
+        }
+        
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        
+        .btn {
+            display: block;
+            padding: 15px 25px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            color: #021026;
+            text-decoration: none;
+            border-radius: var(--glass-radius);
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(2,6,23,0.7);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--muted);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.05);
+            color: #e6eef8;
+        }
+        
+        .description {
+            margin-top: 40px;
+            color: var(--muted);
+            font-size: 0.9rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Shamir Secret Sharing</h1>
+            <p class="subtitle">Dead Man's Switch Protocol</p>
+        </header>
+        
+        <div class="buttons">
+            <a href="project.html" class="btn">Get Shares & Reconstruct</a>
+            <a href="reconstruction.html" class="btn btn-secondary">Manual Reconstruction</a>
+        </div>
+        
+           </div>
+</body>
+</html>

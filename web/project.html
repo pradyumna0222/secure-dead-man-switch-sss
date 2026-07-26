@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shamir Secret Sharing — Dead Man's Switch</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container" id="app">
+    <!-- Back button -->
+    <div class="back-container">
+      <button id="backButton" class="back-button">← Back to Home</button>
+    </div>
+
+    <header class="header">
+      <h1>Shamir Secret Sharing — Dead Man's Switch</h1>
+      <p class="subtitle">Generate shares, pick any <strong>t</strong> shares to reconstruct the secret.</p>
+    </header>
+
+    <!-- Parameters -->
+    <section class="panel" aria-labelledby="paramsTitle">
+      <h2 id="paramsTitle">Parameters</h2>
+
+      <div class="grid">
+        <label for="secret">Secret (integer)
+          <input id="secret" type="text" inputmode="numeric" aria-describedby="secretHelp" placeholder="e.g. 123" />
+          <small id="secretHelp" class="hint">Positive integer (will be used as coeff[0]).</small>
+        </label>
+
+        <label for="sharesCount">Number of shares (r)
+          <input id="sharesCount" type="number" min="1" value="5" />
+        </label>
+
+        <label for="threshold">Threshold (t)
+          <input id="threshold" type="number" min="1" value="3" />
+        </label>
+
+        <label for="prime">Prime (p) &gt; secret
+          <input id="prime" type="text" inputmode="numeric" placeholder="e.g. 2089" />
+        </label>
+      </div>
+
+      <div id="coeffSection" class="coeff-area" aria-live="polite">
+        <h3>Polynomial Coefficients (coeff[0] = secret)</h3>
+        <p class="hint">Enter coefficients for x^1 ... x^(t-1). Leave blank for 0. coeff[0] auto-fills from secret.</p>
+        <div id="coeffInputs" class="coeff-grid" role="group" aria-label="coefficients"></div>
+      </div>
+
+      <div class="actions">
+        <button id="renderCoeffs" title="Render coefficient inputs">Show coeff inputs</button>
+        <button id="generateShares" title="Generate shares (Ctrl+G)">Generate Shares</button>
+        <button id="clearAll" class="danger" title="Clear inputs (with undo)">Clear</button>
+      </div>
+
+      <div id="message" class="message" role="status" aria-live="polite"></div>
+    </section>
+
+    <!-- Shares -->
+    <section class="panel" aria-labelledby="sharesTitle">
+      <h2 id="sharesTitle">Shares</h2>
+      <div id="sharesArea" class="shares-area">
+        <p class="hint">No shares generated yet.</p>
+      </div>
+    </section>
+
+    <!-- Reconstruction -->
+    <section class="panel" aria-labelledby="reconTitle">
+      <h2 id="reconTitle">Reconstruction</h2>
+      <p class="hint">Select exactly <span id="needT">t</span> shares to reconstruct. (Ctrl+R to reconstruct)</p>
+      <div class="actions">
+        <button id="reconstruct">Reconstruct Secret</button>
+        <button id="autoSelect" class="secondary">Auto-select first t</button>
+        <button id="deselectAll" class="secondary">Deselect all</button>
+      </div>
+      <div id="reconResult" class="result" aria-live="polite"></div>
+    </section>
+
+    <footer>
+      <small>Accessibility: ARIA labels + keyboard shortcuts (Ctrl+G generate, Ctrl+R reconstruct). Use tab to navigate. </small>
+    </footer>
+  </main>
+
+  <!-- Confirmation modal for destructive actions -->
+  <div id="confirmModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="confirmTitle">
+    <div class="modal-content">
+      <h3 id="confirmTitle">Confirm action</h3>
+      <p id="confirmMsg">Are you sure you want to clear all inputs? You can undo for a short time after clearing.</p>
+      <div class="modal-actions">
+        <button id="confirmYes" class="danger">Yes, clear</button>
+        <button id="confirmNo" class="secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast area -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
