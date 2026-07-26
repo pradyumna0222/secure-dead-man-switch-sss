@@ -141,12 +141,6 @@ Project presentations are available in the `docs/` folder.
 - Encrypted share transmission
 - Multi-user support
 
----
-
-## 👨‍💻 Contributors
-
-- Pradyumna
-- Team Members (Hackathon Project)
 
 ---
 
